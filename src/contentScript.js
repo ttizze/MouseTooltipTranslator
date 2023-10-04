@@ -22,6 +22,7 @@ import { debounce } from "throttle-debounce";
 //init environment var======================================================================\
 var setting;
 var tooltipContainer;
+var tooltipContainers = [];
 var clientX = 0;
 var clientY = 0;
 var mouseTarget = null;
@@ -104,7 +105,7 @@ async function processWord(word, actionType) {
   //do nothing, if no new word or no word change
   if (!word && activatedWord) {
     activatedWord = word;
-    hideTooltip();
+    // hideTooltip();
     return;
   } else if (activatedWord == word || !word) {
     return;
@@ -123,7 +124,7 @@ async function processWord(word, actionType) {
     // word == translatedText ||
     setting["langExcludeList"].includes(sourceLang)
   ) {
-    hideTooltip();
+    // hideTooltip();
     return;
   } else if (activatedWord != word) {
     return;
@@ -145,7 +146,7 @@ async function processWord(word, actionType) {
       actionType
     );
   } else {
-    hideTooltip();
+    // hideTooltip();
   }
 
   //if use_tts is on or activation key is pressed, do tts
@@ -172,19 +173,13 @@ function getTextFromRange(range, isIframe) {
   //expand char to get word,sentence based on setting
   //if swap key pressed, swap detect type
   //if mouse target is special web block, handle as block
-  var detectType = setting["detectType"];
-  detectType = keyDownList[setting["keyDownDetectSwap"]]
-    ? detectType == "word"
-      ? "sentence"
-      : "word"
-    : detectType;
-  detectType = checkMouseTargetIsSpecialWebBlock() ? "container" : detectType;
-  expandRange(range, detectType);
+  // Get the element that the mouse is over
+  var element = document.elementFromPoint(clientX, clientY);
 
-  if (!isIframe && !util.checkXYInElement(range, clientX, clientY)) {
-    return "";
-  }
-  return range.toString();
+  // Get the text content of the element
+  var text = element.innerText;
+
+  return text;
 }
 
 function expandRange(range, type) {
@@ -223,12 +218,34 @@ function checkWindowFocus() {
 }
 
 function showTooltip(text, lang) {
-  hideTooltip(); //reset tooltip arrow
-  checkTooltipContainer();
-  setTooltipPosition("showTooltip");
-  applyLangAlignment(lang);
-  tooltipContainer.attr("data-original-title", text); //place text on tooltip
-  tooltipContainer.tooltip("show");
+  // Create a new tooltip container
+  var newTooltipContainer = $('<div></div>')
+    .appendTo(document.body)
+    .attr({
+      'data-toggle': 'tooltip',
+      'data-html': 'true',
+      'title': text,
+      'data-placement': 'top',
+      'data-trigger': 'manual'
+    })
+    .css({
+      'position': 'fixed',
+      'left': clientX + 'px',
+      'top': clientY + 'px'
+    });
+
+  // Initialize the tooltip
+  newTooltipContainer.tooltip();
+
+  // Set language alignment
+  var isRtl = rtlLangList.includes(lang) ? 'rtl' : 'ltr';
+  newTooltipContainer.attr('dir', isRtl);
+
+  // Show the tooltip
+  newTooltipContainer.tooltip('show');
+
+  // Add the new tooltip container to the array
+  tooltipContainers.push(newTooltipContainer);
 }
 
 function hideTooltip() {
@@ -390,7 +407,7 @@ function handleKeydown(e) {
   //if user pressed ctrl+f  ctrl+a, hide tooltip
   if ((e.code == "KeyF" || e.code == "KeyA") && e.ctrlKey) {
     mouseMoved = false;
-    hideTooltip();
+    // hideTooltip();
     return;
   }
   if (e.key == "Escape") {
