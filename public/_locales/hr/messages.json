@@ -3,7 +3,7 @@
 		"message": "Main                                      "
 	},
 	"Mouse_Tooltip_Translator": {
-		"message": "Mouse Tooltip Translator"
+		"message": "Hover Translator"
 	},
 	"Show_Tooltip_When": {
 		"message": "Show Tooltip When"
@@ -147,6 +147,6 @@
 		"message": "Translator Alat -a za miša : Dictionary & Papago"
 	},
 	"appDesc": {
-		"message": "Translator Mouse Tooltip Prevodite tekst MouseOver pomoću Google Translatea"
+		"message": "Translator Hover Prevodite tekst MouseOver pomoću Google Translatea"
 	}
 }

@@ -14,8 +14,8 @@ import time
 translator = Translator()
 
 
-appName = "Mouse Tooltip Translator"
-appDesc = "Mouse Tooltip Translator translate mouseover text using google translate"
+appName = "Hover Translator"
+appDesc = "Hover Translator translate mouseover text using google translate"
 
 localeList = ['ar', 'am', 'bg', 'bn', 'ca', 'cs', 'da', 'de', 'el', 'en', 'en_GB', 'en_US', 'es', 'es_419', 'et', 'fa', 'fi', 'fil', 'fr', 'gu', 'he', 'hi', 'hr', 'hu', 'id', 'it',
               'ja', 'kn', 'ko', 'lt', 'lv', 'ml', 'mr', 'ms', 'nl', 'no', 'pl', 'pt_BR', 'pt_PT',  'ro', 'ru', 'sk', 'sl', 'sr', 'sv', 'sw', 'ta', 'te', 'th', 'tr', 'uk', 'vi', 'zh_CN', 'zh_TW']
@@ -23,7 +23,7 @@ translateLangCodeDict = {"zh_CN": "zh-CN", "zh_TW": "zh-TW"}
 i18List = [
 
     "Main                                      ",
-    "Mouse Tooltip Translator",
+    "Hover Translator",
     "Show Tooltip When",
     "Voice When",
     "Translate When",

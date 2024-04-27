@@ -2,8 +2,8 @@
 	"Main______________________________________": {
 		"message": "Main                                      "
 	},
-	"Mouse_Tooltip_Translator": {
-		"message": "Mouse Tooltip Translator"
+	"Hover_translator": {
+		"message": "Hover Translator"
 	},
 	"Show_Tooltip_When": {
 		"message": "Show Tooltip When"
@@ -144,9 +144,9 @@
 		"message": "Title                                      "
 	},
 	"appName": {
-		"message": "マウスツールチップ翻訳者"
+		"message": "Hover_translator"
 	},
 	"appDesc": {
-		"message": "マウスツールチップ翻訳者は、Google翻訳を使用してマウスオーバーテキストを翻訳します"
+		"message": "Hover_translator translates text"
 	}
 }

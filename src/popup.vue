@@ -1,11 +1,10 @@
 <template>
   <v-app id="app">
-    <v-fade-transition hide-on-leave>
       <!-- main page ====================================== -->
       <div v-if="currentPage == 'main'" tile flat>
-        <v-toolbar color="blue" dark dense>
-          <v-toolbar-title>
-            <div>{{ remainSettingDesc["appName"] }}</div>
+        <v-toolbar color="black" dark dense>
+          <v-toolbar-title >
+            <div  style="color: white;">{{ remainSettingDesc["appName"] }}</div>
           </v-toolbar-title>
           <v-btn icon @click="currentPage = 'history'">
             <v-icon>mdi-history</v-icon>
@@ -149,7 +148,7 @@
           <v-spacer></v-spacer>
           <v-card-title class="white--text">
             <div class="text-h4 pl-12 pt-12">
-              Mouse Tooltip<br />
+              Hover<br />
               Translator
             </div>
           </v-card-title>
@@ -231,7 +230,6 @@
           </v-list-item>
         </v-list>
       </div>
-    </v-fade-transition>
   </v-app>
 </template>
 <script>

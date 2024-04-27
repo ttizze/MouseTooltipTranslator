@@ -52,7 +52,7 @@
     "service_worker": "background.js"
   },
   "action": {
-    "default_title": "Mouse Tooltip Translator",
+    "default_title": "Hover Translator",
     "default_popup": "popup.html"
   },
   "options_ui": {

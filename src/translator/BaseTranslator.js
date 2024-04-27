@@ -6,8 +6,11 @@ export default class BaseTranslator {
 
   static async translate(text, fromLang, targetLang) {
     try {
+      console.log("Original text: ", text);  // オリジナルのテキストをログに出力
+
       fromLang = this.encodeLangCode(fromLang);
       targetLang = this.encodeLangCode(targetLang);
+
       var response = await this.requestTranslate(text, fromLang, targetLang);
 
       var { translatedText, detectedLang, transliteration } = this.wrapResponse(
@@ -15,6 +18,9 @@ export default class BaseTranslator {
         fromLang,
         targetLang
       );
+      
+      console.log("Translated text: ", translatedText);  // 翻訳されたテキストをログに出力
+  
       return {
         translatedText,
         transliteration,

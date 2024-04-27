@@ -36,11 +36,11 @@ export default class google extends BaseTranslator {
       //clear html tag and decode html entity
       var textDecoded = decode(translatedText);
       var textWithoutITag = textDecoded.replace(/(<i>).+?(<\/i>)/gi, " ");
-      var textWithoutBTag = textWithoutITag.replace(/<\/?b[^>]*>/g, " ");
-      var textWithTrim = textWithoutBTag.replace(/\s\s+/g, " ").trim();
+      var textWithoutBTag = textWithoutITag.replace(/<\/?b[^>]*>/g, "\n");
+      console.log("text without b tag: ", textWithoutBTag)
 
       return {
-        translatedText: textWithTrim,
+        translatedText: textWithoutBTag,
         detectedLang,
         transliteration: "",
       };

@@ -3,7 +3,7 @@
 		"message": "Main                                      "
 	},
 	"Mouse_Tooltip_Translator": {
-		"message": "Mouse Tooltip Translator"
+		"message": "Hover Translator"
 	},
 	"Show_Tooltip_When": {
 		"message": "Show Tooltip When"
@@ -147,6 +147,6 @@
 		"message": "Tradutor da dica de ferramenta do mouse"
 	},
 	"appDesc": {
-		"message": "Mouse Tooltip Tradutor Traduzir Texto do MouseOver usando o Google Translate"
+		"message": "Hover Tradutor Traduzir Texto do MouseOver usando o Google Translate"
 	}
 }

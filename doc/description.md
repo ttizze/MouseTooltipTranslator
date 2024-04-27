@@ -153,7 +153,7 @@ English, Russian, Japanese, Chinese and so on
   - Fix css conflict on tooltip (request by min geon shin)
   - Add sub google translator option
 - 0.1.48
-  - google reject by "Irrelevant information about Mouse Tooltip Translator"
+  - google reject by "Irrelevant information about Hover Translator"
     - remove Translate API section, Language Detect section, TTS section and UI Design section
 - 0.1.47
   - update tesseract ocr library
@@ -263,12 +263,12 @@ English, Russian, Japanese, Chinese and so on
   - google reject by description
     - Remove “Supported Translation Languages with google translate”
     - Remove “Supported TTS languages with google TTS”
-    - Avoid frequently mentioned Mouse tooltip translator in description
+    - Avoid frequently mentioned Hover translator in description
   - Remove multilingual manifest description
   - Rollback google translate respond to fix it
-  - Rollback extension name to Mouse tooltip translator
+  - Rollback extension name to Hover translator
 - 0.1.15
-  - Change name, Mouse tooltip translator to Mouseover translator
+  - Change name, Hover translator to Mouseover translator
   - Support font size customization (request by Ramy_Ahmed.87)
   - Support Bing translator (request by Ramy_Ahmed.87)
   - Fix google translate response
@@ -329,11 +329,11 @@ English, Russian, Japanese, Chinese and so on
   - Fix tooltip container arrow display error
   - Fix key hold error (issue on tab switching)
 - 0.1.0
-  - First release of Mouse tooltip translator
+  - First release of Hover translator
 
 # Intro  
 
-Mouse tooltip translator is a google chrome extension that provide convenient translate experience. This translator extension minimize current generally required step to translate word. Copying and pasting process is used to obtain translated sentence from google translate site. This extension uses text hovering event to decide which text is required to be translated for user. It automatically detects pointed area and it collect near words to group them as sentence. This translator extension translate mouse pointed sentence text into user language using any translator API like google translate and Bing translator. For providing direct translation, it displays given translated text with tooltip. User does not require any other more action for translate text. This extension process replaces general translate process which open new tab for using google translate to getting translated sentence. This replace translating process makes new paradigm on translator. It helps users to learn language directly in one place by providing translated text one another. Learning language activity is not only stopped in web site. Mouse tooltip translator also support pdf, youtube subtitle, image (manga, comics and webtoon).  
+Hover translator is a google chrome extension that provide convenient translate experience. This translator extension minimize current generally required step to translate word. Copying and pasting process is used to obtain translated sentence from google translate site. This extension uses text hovering event to decide which text is required to be translated for user. It automatically detects pointed area and it collect near words to group them as sentence. This translator extension translate mouse pointed sentence text into user language using any translator API like google translate and Bing translator. For providing direct translation, it displays given translated text with tooltip. User does not require any other more action for translate text. This extension process replaces general translate process which open new tab for using google translate to getting translated sentence. This replace translating process makes new paradigm on translator. It helps users to learn language directly in one place by providing translated text one another. Learning language activity is not only stopped in web site. Hover translator also support pdf, youtube subtitle, image (manga, comics and webtoon).  
 
 # TTS  
 
@@ -341,11 +341,11 @@ For supporting translate feature, this translator extension provides text pronun
 
 # PDF  
 
-PDF viewer is in this translator extension. Mouse tooltip translator uses PDF.js as built-in PDF reader to support pdf file to provide translate feature over pdf. This translator extension has pdf feature to give a possibility to user to read foreign essay paper with translate service. This translator extension does not use chrome pdf reader. Chrome pdf reader provide pdf as embed text format which has difficulty on text crawling process for translate with this translator extension. This translator extension intercept pdf URL and redirect to mouse tooltip pdf.js page to provide pdf reader with tooltip translate feature. Local pdf file is also supported when user give local URL permission to this translator extension.  
+PDF viewer is in this translator extension. Hover translator uses PDF.js as built-in PDF reader to support pdf file to provide translate feature over pdf. This translator extension has pdf feature to give a possibility to user to read foreign essay paper with translate service. This translator extension does not use chrome pdf reader. Chrome pdf reader provide pdf as embed text format which has difficulty on text crawling process for translate with this translator extension. This translator extension intercept pdf URL and redirect to Hover pdf.js page to provide pdf reader with tooltip translate feature. Local pdf file is also supported when user give local URL permission to this translator extension.  
 
 # OCR  
 
-Currently, this translator extension has OCR to translate image text. Mouse tooltip translator’s OCR is turned off initially. To use OCR translate feature, user need to press shift to enable OCR. When user mouse over on image (manga, comics, webtoon and etc), this translator extension process OCR using tesseract.js to get its text for translate image.  
+Currently, this translator extension has OCR to translate image text. Hover translator’s OCR is turned off initially. To use OCR translate feature, user need to press shift to enable OCR. When user mouse over on image (manga, comics, webtoon and etc), this translator extension process OCR using tesseract.js to get its text for translate image.  
 
 # Translate API
 
@@ -353,4 +353,4 @@ This extension is positioned between user and translator API for providing simpl
 
 # Ownership  
 
-Mouse tooltip translator is individual developer’s created extension that is not officially made by google. It just uses google translate and google text to speech service to give ease translate experience. This translator extension does not own google translate and Bing translator. Google translate is owned by google and Bing translator is owned by Microsoft. This translator extension uses Google’s provided google translate service. Purpose of this translator extension gives translate experience on any web site. This translator extension provides simple tooltip translate service on anywhere like YouTube and pdf.
+Hover translator is individual developer’s created extension that is not officially made by google. It just uses google translate and google text to speech service to give ease translate experience. This translator extension does not own google translate and Bing translator. Google translate is owned by google and Bing translator is owned by Microsoft. This translator extension uses Google’s provided google translate service. Purpose of this translator extension gives translate experience on any web site. This translator extension provides simple tooltip translate service on anywhere like YouTube and pdf.

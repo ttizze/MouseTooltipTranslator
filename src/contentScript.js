@@ -18,6 +18,7 @@ import * as util from "/src/util";
 import * as ocrView from "/src/ocr/ocrView.js";
 import delay from "delay";
 import { debounce } from "throttle-debounce";
+import { contentScripts } from "webextension-polyfill";
 
 //init environment var======================================================================\
 var setting;
@@ -98,7 +99,8 @@ async function processWord(word, actionType) {
   if (checkMouseTargetIsTooltip()) {
     return;
   }
-  word = util.filterWord(word); //filter out one that is url,over 1000length,no normal char
+
+  console.log("processWord word: " + word);
 
   //hide tooltip, if activated word exist and current word is none
   //do nothing, if no new word or no word change
@@ -109,12 +111,17 @@ async function processWord(word, actionType) {
   } else if (activatedWord == word || !word) {
     return;
   }
+  document.body.style.cursor = 'wait';
 
   //stage current processing word
   activatedWord = word;
+
   var { translatedText, sourceLang, targetLang, transliteration } =
     await translateWithReverse(word);
+  console.log("translatedText: " + translatedText);
 
+  // Change the cursor back to the default icon
+  document.body.style.cursor = 'default';
   //if translated text is empty, hide tooltip
   // if translation is not recent one, do not update
   if (
@@ -136,6 +143,8 @@ async function processWord(word, actionType) {
     keyDownList[setting["showTooltipWhen"]]
   ) {
     var tooltipText = concatTransliteration(translatedText, transliteration);
+    console.log("tooltipText: " + tooltipText);
+
     showTooltip(tooltipText, targetLang);
     requestRecordTooltipText(
       word,
@@ -227,6 +236,7 @@ function showTooltip(text, lang) {
   checkTooltipContainer();
   setTooltipPosition("showTooltip");
   applyLangAlignment(lang);
+  console.log("showTooltip text: " + text);
   tooltipContainer.attr("data-original-title", text); //place text on tooltip
   tooltipContainer.tooltip("show");
 }

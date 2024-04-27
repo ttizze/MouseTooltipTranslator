@@ -24,7 +24,7 @@ function checkCurrentUrlIsLocalFileUrl() {
       if (isAllowedAccess == false) {
         alert(`
     ------------------------------------------------------------------
-    Mouse tooltip translator require permission for local pdf file.
+    Hover translator require permission for local pdf file.
     User need to turn on 'Allow access to file URLs' from setting.
     This page will be redirected to setting page after confirm.
     -------------------------------------------------------------------`);
@@ -81,37 +81,41 @@ function changeUrlWithoutRedirect(fileParam){
 
 
 
-// change space system for tooltip
-function addSpaceBetweenPdfText(){
 
+function addSpaceBetweenPdfText() {
   // remove all br
   document.querySelectorAll('br').forEach(function(item, index) {
     item.remove();
-  })
+  });
 
   // add manual new line
   var lastY;
+  var lastLeft;
+  var lastFontSize;
   var lastItem;
+  var lines = [];
+
   document.querySelectorAll(".page span[role='presentation']").forEach(function(item, index) {
     var currentY = parseFloat(item.getBoundingClientRect().top);
+    var currentLeft = parseFloat(item.getBoundingClientRect().left);
     var currentFontSize = parseFloat(window.getComputedStyle(item).fontSize);
 
-    // if between element size is big enough, add new line 
-    // else add space
     if (index === 0) { //skip first index
-
+      lines.push({ top: currentY, left: currentLeft, text: item.textContent.trimStart(), item: item, fontSize: currentFontSize });
     } else {
-      if (lastY < currentY - currentFontSize * 2 || currentY + currentFontSize * 2 < lastY) { //if y diff double, give end line
-        if (!(/\n $/.test(lastItem.textContent))) { //if no end line, give end line
-          lastItem.textContent = lastItem.textContent + "\n ";
-        }
-      } else if (lastY < currentY - currentFontSize || currentY + currentFontSize < lastY) { // if y diff, give end space
-        if (!(/ $/.test(lastItem.textContent))) { //if no end space, give end space
-          lastItem.textContent = lastItem.textContent + " ";
-        }
+      var line = lines[lines.length - 1];
+      //フォントサイズがほぼ同じで､同じ段落にある場合(今の行の上下に前の行のフォントサイズの2倍以上の空白がない場合)は､前の行のテキストに今の行のテキストを追加する
+      if (Math.abs(line.fontSize - currentFontSize) < 0.1 && !(lastY < currentY - lastFontSize * 1.5 || currentY + lastFontSize * 1.5 < lastY)) {
+        line.text += ' ' + item.textContent;
+        line.item.textContent = line.text;
+        item.remove(); // remove this item as its text is now included in the first item
+      } else {
+        lines.push({ top: currentY, left: currentLeft, text: item.textContent.trimStart(), item: item, fontSize: currentFontSize });
       }
     }
-    lastY = currentY
+    lastY = currentY;
+    lastLeft = currentLeft;
+    lastFontSize = currentFontSize;
     lastItem = item;
-  })
+  });
 }
